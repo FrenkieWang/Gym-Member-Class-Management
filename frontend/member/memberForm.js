@@ -129,10 +129,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         axios.get(`http://localhost:5000/members/generate-member`)
         .then(response => {
-            console.log("Generate a Member", response.data); 
-            let memberData = {...response.data}; // light copy
-            delete memberData._id; 
-            delete memberData.__v; 
+            const memberData = response.data
+            console.log("Generate a Member", memberData); 
         
             // Fill the <form> with fetched Member
             let memberForm = document.getElementById('memberForm');

@@ -114,11 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         axios.get(`http://localhost:5000/courses/generate-course`)
         .then(response => {
+            let courseData = response.data; 
             console.log("Generate a Course", response.data); 
-            let courseData = {...response.data}; // light copy
-            delete courseData._id; 
-            delete courseData.__v; 
-        
+
             // Fill the <form> with fetched Course
             let courseForm = document.getElementById('courseForm');
             Object.keys(courseData).forEach(key => {
